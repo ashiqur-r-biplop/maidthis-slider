@@ -1,0 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 650px;
+  background-color: #62C9D3;
+  color: #fff;
+  padding: 20px 0px;
+}
+
+.container .contents-wraper {
+  width: 70%;
+  height: 100%;
+  min-height: inherit;
+  margin: 0px auto;
+  text-align: center;
+
+}
+
+.contents-wraper .header h1 {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.contents-wraper .testRow {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  position: relative;
+  overflow: hidden;
+
+}
+
+
+.testRow .testItem {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0px 100px;
+  gap: 15px;
+  cursor: grabbing;
+}
+
+.testItem p {
+  margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.testRow .testItem:not(.active) {
+  top: 0;
+  left: -100%;
+}
+
+.testRow .testItem p {
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  padding: 10px;
+}
+
+.contents-wraper .indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.contents-wraper .indicators .dot {
+  width: 10px;
+  height: 10px;
+  margin: 0px 3px;
+  background-color: #3d788a83;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.5s ease;
+}
+
+.contents-wraper .indicators .active {
+  background-color: #306777;
+  width: 10px;
+  height: 10px;
+  transition: transform 0.3s ease;
+}
+
+.contents-wraper .indicators div {
+  transition: transform 0.3s ease;
+}
+
+.next-prev-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#next,
+#prev {
+  cursor: pointer;
+}
+
+.img-container {
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.img-container .image-box {
+  width: 50%;
+  position: relative;
+}
+
+.img-container .image-box svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.img-container .image-box img {
+  width: 100%;
+  height: 100%;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.image-title {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-title h2 {
+  border: 1px solid white;
+  width: 70%;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.text-container em {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+#closePopup {
+  position: relative;
+  top: -160px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@keyframes next1 {
+  from {
+    left: 0%;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes next2 {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0%;
+  }
+}
+
+@keyframes prev1 {
+  from {
+    left: 0%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes prev2 {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 0%;
+  }
+}
+
+@media (max-width: 550px) {
+  .container .contents-wraper {
+    width: 90%;
+  }
+
+  .contents-wraper .header h1 {
+    font-size: 22px;
+  }
+
+  .testRow .testItem p {
+    font-size: 16px;
+    letter-spacing: initial;
+    line-height: initial;
+    margin-bottom: 0px;
+  }
+
+  .contents-wraper .indicators {
+    width: 100%;
+  }
+
+  .testRow .testItem {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .container .contents-wraper {
+    width: 80%;
+    height: auto;
+    min-height: inherit;
+    margin: 0px auto;
+    text-align: center;
+  }
+
+  .img-container {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .img-container .image-box {
+    width: 100%;
+    position: relative;
+  }
+
+  .image-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .image-title h2 {
+    width: 90%;
+  }
+}
