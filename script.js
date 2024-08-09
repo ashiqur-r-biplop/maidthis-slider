@@ -111,38 +111,31 @@ function dragSlide(e) {
 function endDragging() {
   startX = null;
 }
-// Update SVG click event listener to use the video IDs
-const svgElements = document.querySelectorAll(".image-box svg");
+const svgElement = document.querySelector(".image-box svg");
 
-svgElements.forEach(svg => {
-  svg.addEventListener("click", () => {
-    const videoId = svg.getAttribute("id");
-    const videoUrl = allVideos[videoId];
+svgElement.addEventListener("click", () => {
+  const popup = document.createElement("div");
+  popup.style.position = "fixed";
+  popup.style.top = "50%";
+  popup.style.left = "50%";
+  popup.style.transform = "translate(-50%, -50%)";
+  popup.style.background = "rgba(0, 0, 0, 0.5)";
+  popup.style.padding = "20px";
+  popup.style.zIndex = "1000";
+  popup.style.width = "100%";
+  popup.style.height = "100%";
+  popup.style.display = "flex";
+  popup.style.justifyContent = "center";
+  popup.style.alignItems = "center";
+  popup.innerHTML = `
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/j8AkVCSoMm8?si=2U7i0KRxXBT5I3vl" 
+    frameborder="0" allowfullscreen></iframe>
+    <button id="closePopup">X</button>
+  `;
+  document.body.appendChild(popup);
 
-    // Create and show the popup with the correct video
-    const popup = document.createElement("div");
-    popup.style.position = "fixed";
-    popup.style.top = "50%";
-    popup.style.left = "50%";
-    popup.style.transform = "translate(-50%, -50%)";
-    popup.style.background = "rgba(0, 0, 0, 0.5)";
-    popup.style.padding = "20px";
-    popup.style.zIndex = "1000";
-    popup.style.width = "80%";
-    popup.style.height = "80%";
-    popup.style.display = "flex";
-    popup.style.justifyContent = "center";
-    popup.style.alignItems = "center";
-    popup.innerHTML = `
-      <iframe width="100%" height="100%" src="${videoUrl}" 
-      frameborder="0" allowfullscreen></iframe>
-      <button id="closePopup" style="position: absolute; top: 10px; right: 10px; background: #fff; border: none; padding: 10px; cursor: pointer;">X</button>
-    `;
-    document.body.appendChild(popup);
-
-    document.getElementById("closePopup").addEventListener("click", () => {
-      document.body.removeChild(popup);
-    });
+  document.getElementById("closePopup").addEventListener("click", () => {
+    document.body.removeChild(popup);
   });
 });
 
