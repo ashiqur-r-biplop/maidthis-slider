@@ -119,6 +119,11 @@
   cursor: pointer;
 }
 
+#next img,
+#prev img {
+  width: 40px;
+}
+
 .img-container {
   height: 50%;
   display: flex;
@@ -238,6 +243,11 @@
     letter-spacing: initial;
     line-height: initial;
     margin-bottom: 0px;
+  }
+
+  #next img,
+  #prev img {
+    width: 20px;
   }
 
   .contents-wraper .indicators {
