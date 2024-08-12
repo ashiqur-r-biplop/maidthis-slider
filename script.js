@@ -6,7 +6,7 @@ let dots = document.querySelectorAll(".dot");
 var counter = 0;
 var deleteInterval;
 
-// Add click event to the indicators
+// Add click event to the indicators 
 function switchTest(currentTest) { 
   currentTest.classList.add("active");
   var testId = currentTest.getAttribute("attr");
