@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
 // Access the testimonials
 let testSlide = document.querySelectorAll(".testItem");
 // Access the indicators
@@ -15,8 +14,7 @@ var deleteInterval;
 function switchTest(currentTest) {
   currentTest.classList.add("active");
 
-  var testId = currentTest.getAttribute("attr");
-  console.log(testId, counter);
+  var testId = currentTest.getAttribute("data-attr");
 
   if (parseInt(testId) > parseInt(counter)) {
     testSlide[counter].style.animation = "next1 0.5s ease-in forwards";
@@ -31,7 +29,6 @@ function switchTest(currentTest) {
   }
   indicators();
 }
-
 // Add and remove active class from the indicators
 function indicators() {
   for (i = 0; i < dots.length; i++) {
@@ -97,10 +94,6 @@ function slidePrev() {
 
 let startX, moveX;
 
-testRow.addEventListener("mousedown", startDragging);
-testRow.addEventListener("mousemove", dragSlide);
-testRow.addEventListener("mouseup", endDragging);
-
 function startDragging(e) {
   startX = e.clientX;
 }
@@ -123,4 +116,7 @@ function dragSlide(e) {
 function endDragging() {
   startX = null;
 }
-});
+
+testRow.addEventListener("mousedown", startDragging);
+testRow.addEventListener("mousemove", dragSlide);
+testRow.addEventListener("mouseup", endDragging);
