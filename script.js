@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function() {
 // Access the testimonials
 let testSlide = document.querySelectorAll(".testItem");
 // Access the indicators
@@ -122,3 +123,4 @@ function dragSlide(e) {
 function endDragging() {
   startX = null;
 }
+});
