@@ -6,11 +6,15 @@ let dots = document.querySelectorAll(".dot");
 var counter = 0;
 var deleteInterval;
 
-// Add click event to the indicators 
-function switchTest(currentTest) { 
+// Add click event to the indicators
+function switchTest(currentTest) {
   currentTest.classList.add("active");
+
   var testId = currentTest.getAttribute("attr");
-  if (testId > counter) {
+  console.log(testId, counter);
+
+  if (parseInt(testId) > parseInt(counter)) {
+
     testSlide[counter].style.animation = "next1 0.5s ease-in forwards";
     counter = testId;
     testSlide[counter].style.animation = "next2 0.5s ease-in forwards";
@@ -56,14 +60,20 @@ autoSliding();
 
 // Stop auto sliding when mouse is over the indicators
 const container = document.querySelector(".indicators");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
 container.addEventListener("mouseover", pause);
+nextBtn.addEventListener("mouseover", pause);
+prevBtn.addEventListener("mouseover", pause);
+
 function pause() {
   clearInterval(deleteInterval);
 }
 
 // Resume sliding when mouse is out of the indicators
 container.addEventListener("mouseout", autoSliding);
-
+nextBtn.addEventListener("mouseout", autoSliding);
+prevBtn.addEventListener("mouseout", autoSliding);
 // Stop auto sliding when mouse is over the testimonials
 testSlide.forEach(function (item) {
   item.addEventListener("mouseover", pause);
@@ -138,11 +148,3 @@ svgElement.addEventListener("click", () => {
     document.body.removeChild(popup);
   });
 });
-
-const allVideos = {
-  video1: "https://www.youtube.com/embed/j8AkVCSoMm8?si=2U7i0KRxXBT5I3vl",
-  video2: "https://www.youtube.com/embed/ETgtDdhVo1U?si=W8riHjwClhyPT33u",
-  video3: "https://www.youtube.com/embed/tqweDynJWiQ?si=554uFoAwfFIqS9XO",
-  video4: "https://www.youtube.com/embed/TPiCWUQ78CY?si=DNScabhxpoAtLCZv",
-  video5: "https://www.youtube.com/embed/uM2hEVLOWAo?si=56CVpQMk0Pp7f6_K",
-};
