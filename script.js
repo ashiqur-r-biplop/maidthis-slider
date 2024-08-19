@@ -2,6 +2,11 @@
 let testSlide = document.querySelectorAll(".testItem");
 // Access the indicators
 let dots = document.querySelectorAll(".dot");
+const container = document.querySelector(".indicators");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const testRow = document.querySelector(".testRow");
+const svgElement = document.querySelector(".image-box svg");
 
 var counter = 0;
 var deleteInterval;
@@ -14,7 +19,6 @@ function switchTest(currentTest) {
   console.log(testId, counter);
 
   if (parseInt(testId) > parseInt(counter)) {
-
     testSlide[counter].style.animation = "next1 0.5s ease-in forwards";
     counter = testId;
     testSlide[counter].style.animation = "next2 0.5s ease-in forwards";
@@ -59,9 +63,7 @@ function autoSliding() {
 autoSliding();
 
 // Stop auto sliding when mouse is over the indicators
-const container = document.querySelector(".indicators");
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("prev");
+
 container.addEventListener("mouseover", pause);
 nextBtn.addEventListener("mouseover", pause);
 prevBtn.addEventListener("mouseover", pause);
@@ -92,7 +94,7 @@ function slidePrev() {
   testSlide[counter].style.animation = "prev2 0.5s ease-in forwards";
   indicators();
 }
-const testRow = document.querySelector(".testRow");
+
 let startX, moveX;
 
 testRow.addEventListener("mousedown", startDragging);
@@ -121,7 +123,6 @@ function dragSlide(e) {
 function endDragging() {
   startX = null;
 }
-const svgElement = document.querySelector(".image-box svg");
 
 svgElement.addEventListener("click", () => {
   const popup = document.createElement("div");
@@ -137,11 +138,8 @@ svgElement.addEventListener("click", () => {
   popup.style.display = "flex";
   popup.style.justifyContent = "center";
   popup.style.alignItems = "center";
-  popup.innerHTML = `
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j8AkVCSoMm8?si=2U7i0KRxXBT5I3vl" 
-    frameborder="0" allowfullscreen></iframe>
-    <button id="closePopup">X</button>
-  `;
+  popup.innerHTML =
+    '<iframe width="560" height="315" src="https://www.youtube.com/embed/j8AkVCSoMm8?si=2U7i0KRxXBT5I3vl"  frameborder="0" allowfullscreen></iframe> <button id="closePopup">X</button>';
   document.body.appendChild(popup);
 
   document.getElementById("closePopup").addEventListener("click", () => {
