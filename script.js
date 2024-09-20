@@ -5,7 +5,7 @@ let dots = document.querySelectorAll(".dot");
 const container = document.querySelector(".indicators");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
-const testRow = document.querySelector(".testRow");
+const testRow = document.querySelector(".testRow"); 
 
 var counter = 0;
 var deleteInterval;
